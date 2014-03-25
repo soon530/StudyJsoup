@@ -39,6 +39,7 @@ public class jsoupTest {
 		Document doc = Jsoup.connect("http://example.com/").get();
 		String title = doc.title();
 		System.out.println("title" + title);
+		System.out.println("all" + doc.body());
 	}
 
 	@Test
@@ -60,6 +61,7 @@ public class jsoupTest {
 	public void tellMeMyWorkingDirectory() {
 		System.out.println(new java.io.File("").getAbsolutePath());
 	}
+	
 	
 	
 
