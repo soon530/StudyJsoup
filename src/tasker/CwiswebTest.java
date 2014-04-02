@@ -85,5 +85,16 @@ public class CwiswebTest {
 		System.out.println("title" + title);
 		System.out.println("all" + doc.body());
 	}
+	
+	@Test
+	public void loadBabySitterDetailPageFromUrl() throws IOException {
+		String sn = "E222138751";
+		String url = "http://cwisweb.sfaa.gov.tw/04nanny/03view.jsp";
+		Document doc = Jsoup.connect(url).data("sn", sn).timeout(3000).post();
+		String title = doc.title();
+		System.out.println("title" + title);
+		System.out.println("all" + doc.body());
+	}
+
 
 }
