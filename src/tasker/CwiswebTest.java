@@ -4,6 +4,8 @@ import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -94,6 +96,20 @@ public class CwiswebTest {
 		String title = doc.title();
 		System.out.println("title" + title);
 		System.out.println("all" + doc.body());
+	}
+
+	@Test
+	public void loadBabySitterDetailPageFromUrlAndSaveToLocal() throws IOException {
+		String sn = "E222138751";
+		String url = "http://cwisweb.sfaa.gov.tw/04nanny/03view.jsp";
+		Document doc = Jsoup.connect(url).data("sn", sn).timeout(3000).post();
+		String html = doc.html();
+		
+		//String charset = Jsoup.connect(url).response().charset();
+		// ...
+		Writer writer = new PrintWriter("D:\\workspace\\workspace_web_jsoup\\jsoup\\tmp\\03view"+sn+".htm", "UTF-8");
+		writer.write(html);
+		writer.close();
 	}
 
 
